@@ -27,8 +27,6 @@ namespace Leads
 
             click(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[2]/div[3]/div/div/div/form/fieldset/div[3]/div/button"));
 
-            //WebDriverWait waitSaved = new WebDriverWait(driver, TimeSpan.FromSeconds(10));   //wait until name saved
-            //waitSaved.Until(d => { return d.FindElement(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[2]/div[3]/div/div/div/label/h4")); });
         }
 
         public void assertLeadStatusNameChanged(string newname)
