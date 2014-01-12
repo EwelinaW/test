@@ -21,11 +21,11 @@ namespace Leads
             driver = new FirefoxDriver();
         }
 
-        /*[TearDown]
+        [TearDown]
         public void close()
         {
             driver.Quit();
-        }*/
+        }
 
     }
 }
