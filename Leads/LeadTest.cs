@@ -17,10 +17,10 @@ namespace Leads
         {
             LoginPage logPage = new LoginPage(driver);
             logPage.open();
-            DashboardPage dashPage = logPage.logIn("ewelina.w.witos@gmail.com", "TelAviv2013");
+            DashboardPage dashPage = logPage.logIn("ewelina.w.witos@gmail.com", "Password1");
             LeadsPage leadsPage = dashPage.goToLeadsPage();
-            leadsPage.createLead("a", "b");
-            leadsPage.assertLeadCreated("b");
+            leadsPage.createLead("Marek", "Lewarek");
+            leadsPage.assertLeadCreated("Lewarek");
         }
 
     }
