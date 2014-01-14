@@ -20,5 +20,16 @@ namespace Leads
             logPage.logIn("ewelina.w.witos@gmail.com", "Password1");
             logPage.assertTextPresent("Dashboard");
         }
+
+        [Test, Sequential]
+        public void shouldNotLoginToApp(
+            [Values("Password1", "admin", "ewelina.w.witos")] string user,
+            [Values("ewelina.w.witos@gmail.com", "password1", "")] string password)
+        {
+            LoginPage logPage = new LoginPage(driver);
+            logPage.open();
+            logPage.logIn(user, password);
+            logPage.assertTextPresent("Wrong email or password");
+        }
     }
 }

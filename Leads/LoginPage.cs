@@ -30,10 +30,9 @@ namespace Leads
             click(By.XPath("/html/body/div/form/fieldset/div[3]/div/button"));
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            wait.Until(d => { return d.FindElement(By.XPath("/html/body/div[3]/div/div/div/div/header/div/h1")); });
+            //wait.Until(d => { return d.FindElement(By.XPath("/html/body/div[3]/div/div/div/div/header/div/h1")); });
 
             return new DashboardPage(driver);
         }
-
     }
 }

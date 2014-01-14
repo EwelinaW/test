@@ -22,19 +22,15 @@ namespace Leads
         {
             click(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div/ul/li[9]/a"));  //Leads on menu
             click(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/ul/li[2]/a"));   //Lead statuses
-            click(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[2]/div[3]/div/div/div/div/div/button")); //first status edit button
-            insertText(By.Id("name"), newname + Keys.Enter);
 
-            click(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[2]/div[3]/div/div/div/form/fieldset/div[3]/div/button"));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => { return d.FindElement(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[2]/div[3]/div/div/div/div/div/button")); });
 
+            click(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[2]/div[3]/div/div/div/div/div/button")); // edit button
+
+            clearText(By.CssSelector("div.named-objects-list.ui-sortable > div > div.item.form > form > fieldset > div.control-group > div.controls > #name"));
+            insertText(By.CssSelector("div.named-objects-list.ui-sortable > div > div.item.form > form > fieldset > div.control-group > div.controls > #name"), newname);
+            click(By.XPath("//div[@id='lead-status']/div/div/div/form/fieldset/div[3]/div/button"));
         }
-
-        public void assertLeadStatusNameChanged(string newname)
-        {
-            IWebElement element = driver.FindElement(By.XPath("/html/body/div[3]/div/div[2]/div[2]/div[2]/div/div[2]/div[3]/div/div/div/label/h4")); //find Statuses list on page
-            string text = element.Text;
-            Assert.That(text.Contains(newname));
-        }
-
     }
 }

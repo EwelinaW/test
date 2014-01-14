@@ -22,6 +22,5 @@ namespace Leads
             leadsPage.createLead("Marek", "Lewarek");
             leadsPage.assertLeadCreated("Lewarek");
         }
-
     }
 }

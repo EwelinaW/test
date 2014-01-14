@@ -32,6 +32,12 @@ namespace Leads
             element.SendKeys(text);
         }
 
+        public void clearText(By by)
+        {
+            IWebElement element = driver.FindElement(by);
+            element.Clear();
+        }
+
         public void assertTextPresent(string text)
         {
             Assert.That(driver.PageSource.Contains(text), Is.True);
@@ -40,6 +46,24 @@ namespace Leads
         public void assertTitle(string title)
         {
             Assert.That(driver.Title.Contains(title), Is.True);
+        }
+
+        public LoginPage logOut()
+        {
+            click(By.CssSelector("i.icon-cogs"));
+            click(By.LinkText("Logout"));
+            return new LoginPage(driver);
+        }
+
+        public SettingsPage goToSettingsPage()
+        {
+            click(By.XPath("/html/body/div[2]/div/div/div[3]/div/div[2]/ul/li[2]/a/i"));
+            click(By.XPath("/html/body/div[2]/div/div/div[3]/div/div[2]/ul/li[2]/ul/li[3]/a"));
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => { return d.FindElement(By.Id("profileName")); });
+
+            return new SettingsPage(driver);
         }
 
     }

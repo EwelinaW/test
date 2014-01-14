@@ -20,7 +20,7 @@ namespace Leads
 
         public void createLead(string firstname, string lastname)
         {
-            click(By.XPath("/html/body/div[3]/div/div/div[2]/div/div/section/div/div/div/div[2]/div/div/div/span/div/a"));
+            click(By.LinkText("Lead"));
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(d => { return d.FindElement(By.Id("lead-first-name")); });
